@@ -7,15 +7,15 @@ the `grscheller/dotfiles` GitHub repo.
 
 ## Installation Location
 
-To install these files to `$XDG_CONFIG_HOME/nvim` from a standalone
-alone `grscheller/nvim` repo:
+To install these files to `$XDG_CONFIG_HOME/sway-env` from a standalone
+alone `grscheller/sway-env` repo:
 
 ```
    $ ./swayInstall
 ```
 
-If `grscheller/sway` is a submodule of `grscheller/dotfiles`, do not run
-it directly from the submodule.  It is designed to be called from
+If `grscheller/sway-env` is a submodule of `grscheller/dotfiles`, do not
+run it directly from the submodule.  It is designed to be called from
 a subshell of `dfInstall`.
 
 ## Public Domain Declaration
@@ -31,7 +31,7 @@ a subshell of `dfInstall`.
   To the extent possible under law,
   [Geoffrey R. Scheller](https://github.com/grscheller)
   has waived all copyright and related or neighboring rights
-  to [grscheller/nvim](https://github.com/grscheller/sway).
+  to [grscheller/nvim](https://github.com/grscheller/sway-env).
   This work is published from the United States of America.
 </p>
 

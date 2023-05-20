@@ -11,7 +11,7 @@
 export scriptName=swayInstall
 
 XDG_CONFIG_HOME="${XDG_CONFIG_HOME:=$HOME/.config}"
-SWAY_GIT_REPO="${SWAY_GIT_REPO:=$HOME/devel/sway}"
+SWAY_GIT_REPO="${SWAY_GIT_REPO:=$HOME/devel/sway-env}"
 umask 0022
 
 cd "$SWAY_GIT_REPO" || {
