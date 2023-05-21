@@ -8,6 +8,7 @@
 #    mpd - Music daemon for linux
 #
 
+repoName=sway-env
 export scriptName=swayInstall
 
 XDG_CONFIG_HOME="${XDG_CONFIG_HOME:=$HOME/.config}"
@@ -15,7 +16,7 @@ SWAY_GIT_REPO="${SWAY_GIT_REPO:=$HOME/devel/sway-env}"
 umask 0022
 
 cd "$SWAY_GIT_REPO" || {
-   printf "\\nError: Failed to cd into '%s'\\n" "$SWAY_GIT_REPO"
+   printf '\n%s: Error - failed to cd into "%s"\n' "$scriptName" "$SWAY_GIT_REPO"
    return 1
 }
 
@@ -56,26 +57,16 @@ DIRS_TO_CREATE="
 
 ## Install or Check
 
-# Install Sway and other Sway related config files
-for file in $CONFIG_FILES $SYSTEMD_SERVICE_FILES
-do
-   install_file "$XDG_CONFIG_HOME" "$file" ./config 0644 "$switch"
-done
-chmod 0755 "$XDG_CONFIG_HOME"
+# Install Sway and Sway/Desktop related config files
+install_files "$XDG_CONFIG_HOME" "$CONFIG_FILES $SYSTEMD_SERVICE_FILES" ./config 0644 "$switch"
 
 # Remove/report no longer needed files and directories
-for item in $RM_TARGET_ITEMS
-do
-   remove_item "$item" target
-done
+remove_items "$RM_TARGET_ITEMS"
 
-# Create or report on missing directories
-for DIR in $DIRS_TO_CREATE
-do
-   ensure_dir "$DIR"
-done
+# Create/report missing directories
+ensure_dirs "$DIRS_TO_CREATE"
 
-# Final adjustments/tweaks/tasks
+# Adjustments/tweaks/tasks
 case "$switch" in
    install)
       # The background picture I personally use is from
@@ -97,7 +88,7 @@ case "$switch" in
       ;;
    repo)
       # Get git status info on repo
-      printf '\nGit Status:\n'
+      printf '\n%s git status:\n' "$repoName"
       git status -s
       ;;
    target)
