@@ -8,8 +8,8 @@
 #    mpd - Music daemon for linux
 #
 
-repoName=sway-env
-export scriptName=swayInstall
+export MyRepoName=sway-env
+export MyScriptName=swayInstall
 
 XDG_CONFIG_HOME="${XDG_CONFIG_HOME:=$HOME/.config}"
 SWAY_GIT_REPO="${SWAY_GIT_REPO:=$HOME/devel/sway-env}"
@@ -25,7 +25,7 @@ cd "$SWAY_GIT_REPO" || {
 
 ## Files to install
 
-CONFIG_FILES='
+sway_Config_Files='
    alacritty/alacritty_arch.yml
    alacritty/alacritty.yml
    kanshi/config
@@ -40,31 +40,34 @@ CONFIG_FILES='
    wofi/style.css
 '
 
-SYSTEMD_SERVICE_FILES='
+sway_Systemd_Service_Files='
    systemd/user/kanshi.service
    systemd/user/mako.service
    systemd/user/sway-session.target
 '
 
-RM_TARGET_ITEMS="
+sway_Remove_Items="
    $HOME/.mako
    $HOME/.sway
 "
 
-DIRS_TO_CREATE="
+sway_Dirs_To_Create="
    $XDG_CONFIG_HOME/mpd/playlists
 "
 
 ## Install or Check
 
 # Install Sway and Sway/Desktop related config files
-install_files "$XDG_CONFIG_HOME" "$CONFIG_FILES $SYSTEMD_SERVICE_FILES" ./config 0644 "$switch"
+install_files "$XDG_CONFIG_HOME" "
+   $sway_Config_Files
+   $sway_Systemd_Service_Files
+" ./config 0644
 
 # Remove/report no longer needed files and directories
-remove_items "$RM_TARGET_ITEMS"
+remove_items "$sway_Remove_Items"
 
 # Create/report missing directories
-ensure_dirs "$DIRS_TO_CREATE"
+ensure_dirs "$sway_Dirs_To_Create"
 
 # Adjustments/tweaks/tasks
 case "$switch" in
@@ -87,9 +90,7 @@ case "$switch" in
       :
       ;;
    repo)
-      # Get git status info on repo
-      printf '\n%s git status:\n' "$repoName"
-      git status -s
+      git_status
       ;;
    target)
       :
