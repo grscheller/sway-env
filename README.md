@@ -11,7 +11,7 @@ To install these files to `$XDG_CONFIG_HOME/sway-env` from a standalone
 alone `grscheller/sway-env` repo:
 
 ```
-   $ ./swayInstall [-s {install|target|repo}]
+   $ ./swayInstall [-s {install|check|repo}]
 ```
 
 If `grscheller/sway-env` is a submodule of `grscheller/dotfiles`, do not
