@@ -7,7 +7,7 @@ the `grscheller/dotfiles` GitHub repo.
 
 ## Installation Location
 
-To install these files to `$XDG_CONFIG_HOME/sway-env` from a standalone
+To install these files to `$XDG_CONFIG_HOME/` from a standalone
 alone `grscheller/sway-env` repo:
 
 ```
@@ -31,7 +31,7 @@ a subshell of `dfInstall`.
   To the extent possible under law,
   [Geoffrey R. Scheller](https://github.com/grscheller)
   has waived all copyright and related or neighboring rights
-  to [grscheller/nvim](https://github.com/grscheller/sway-env).
+  to [grscheller/sway-env](https://github.com/grscheller/sway-env).
   This work is published from the United States of America.
 </p>
 
