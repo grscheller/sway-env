@@ -12,15 +12,15 @@ export MyRepoName=sway-env
 export MyScriptName=swayInstall
 
 XDG_CONFIG_HOME="${XDG_CONFIG_HOME:=$HOME/.config}"
-SWAY_GIT_REPO="${SWAY_GIT_REPO:=$HOME/devel/sway-env}"
+GIT_REPO="${SWAY_GIT_REPO:=$HOME/devel/sway-env}"
 umask 0022
 
-cd "$SWAY_GIT_REPO" || {
-   printf '\n%s: Error - failed to cd into "%s"\n' "$scriptName" "$SWAY_GIT_REPO"
+cd "$GIT_REPO" || {
+   printf '\n%s: Error - failed to cd into "%s"\n' "$MyScriptName" "$GIT_REPO"
    return 1
 }
 
-## Source install infrastructure if necessary
+## source install infrastructure and, if not done already, parse cmdline args
 . ./.installSource.sh
 
 ## Files to install
