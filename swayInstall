@@ -46,6 +46,10 @@ sway_Systemd_Service_Files='
    systemd/user/sway-session.target
 '
 
+sway_Bin_Scripts='
+   startw
+'
+
 sway_Remove_Items="
    $HOME/.mako
    $HOME/.sway
@@ -62,6 +66,10 @@ install_files "$XDG_CONFIG_HOME" "
    $sway_Config_Files
    $sway_Systemd_Service_Files
 " ./config 0644
+
+# Install ~/bin scripts
+install_files "$HOME/bin" "$sway_Bin_Scripts" ./bin 0755
+chmod 0755 "$HOME/bin"
 
 # Remove/report no longer needed files and directories
 remove_items "$sway_Remove_Items"
